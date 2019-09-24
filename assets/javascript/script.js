@@ -78,11 +78,11 @@ database.ref().on("child_added", function(childSnapshot) {
     var newRow = $('<tr>').append(
         $("<td>").text(trainNum),
         $("<td>").text(destination),
-        $("<td>").text(firstTrain),
         $("<td>").text(frequency),
-        $("<td>").text(minutesAway),
-        // $("<td>").text(),
+        $("<td>").text("nextArrival"),
+        $("<td>").text("minutesAway"),
+
     );
 
-    $("#train-data > tbody").append(newRow);
+    $("#train-data").append(newRow);
 });
