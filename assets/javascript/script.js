@@ -9,13 +9,14 @@
 
 // 1. Initialize Firebase
 var firebaseConfig = {
-    apiKey: "AIzaSyBOWkJNsR-YniUij21MvM8X0xN6ramrJLo",
-    authDomain: "barontrak.firebaseapp.com",
-    databaseURL: "https://barontrak.firebaseio.com",
-    projectId: "barontrak",
-    storageBucket: "barontrak.appspot.com",
-    messagingSenderId: "327793890004",
-    appId: "1:327793890004:web:f8c9af773058530c64e141"
+    apiKey: "AIzaSyDZFsHldh9rUzt2jNdSLFm2fCe4xttyxwo",
+    authDomain: "barontrak2.firebaseapp.com",
+    databaseURL: "https://barontrak2.firebaseio.com",
+    projectId: "barontrak2",
+    storageBucket: "barontrak2.appspot.com",
+    messagingSenderId: "416542727130",
+    appId: "1:416542727130:web:e0a430abd6bb4206f1fee3",
+    measurementId: "G-QV1VZYRFWV"
 };
 
 firebase.initializeApp(firebaseConfig);
