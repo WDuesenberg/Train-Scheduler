@@ -29,7 +29,7 @@ $("#add-train-btn").on("click", function(event) {
 
     var trainNum = $("#train-number-input").val().trim();
     var destination = $("#destination-input").val().trim();
-    var firstTrain = moment($("#first-input").val().trim(), "MM/DD/YYYY").format("X");
+    var firstTrain = $("#first-input").val().trim();
     var frequency = $("#frequency-input").val().trim();
 
     var newTrain = {
@@ -67,20 +67,23 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(firstTrain);
     console.log(frequency);
 
-    var firstTrainPretty = moment.unix(firstTrain).format("MM/DD/YYYY");
-
-    var trainMonths = moment().diff(moment(firstTrain, "X"), "months");
-    console.log(trainMonths);
-
-    var newTrain = trainMonths * frequency;
+    var firstTrainUnixMinutes = moment(firstTrain, "HH:mm").format("X") / 60;
+    var rightNow = Math.floor(moment().format("X") / 60);
+    var diffNum = rightNow - firstTrainUnixMinutes;
+    var minsAway = parseInt(frequency) - (diffNum % parseInt(frequency))
+    console.log(minsAway);
+    var newTrain = moment((rightNow + minsAway) * 60, "X").format("HH:mm");
     console.log(newTrain);
+
+    // var newTrain = trainMonths * parseInt(frequency);
+    // console.log(newTrain);
 
     var newRow = $('<tr>').append(
         $("<td>").text(trainNum),
         $("<td>").text(destination),
         $("<td>").text(frequency),
-        $("<td>").text("nextArrival"),
-        $("<td>").text("minutesAway"),
+        $("<td>").text(newTrain),
+        $("<td>").text(minsAway),
 
     );
 
